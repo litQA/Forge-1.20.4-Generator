@@ -1,0 +1,82 @@
+plugins {
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+}
+
+version = '1.0'
+group = '${package}'
+base.archivesName = 'modid'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '${generator.getGeneratorMinecraftVersion()}'
+
+    copyIdeResources = true
+
+    runs {
+        client {
+            def mcreatorJvmOptions = System.getenv('MCREATOR_JVM_OPTIONS')
+            if (mcreatorJvmOptions) {
+                mcreatorJvmOptions.split("\\s+").findAll { it.trim() }.each { arg ->
+                    jvmArgument(arg)
+                }
+            }
+        }
+
+        server {
+        }
+
+        configureEach {
+            workingDirectory project.file('run')
+            args '--mixin.config', '${modid}.mixins.json'
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "${modid}" {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+configurations {
+    annotationProcessor.extendsFrom compileClasspath
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${generator.getGeneratorMinecraftVersion()}-${generator.getGeneratorBuildFileVersion()}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5'
+}
+
+sourceSets.main.resources.srcDir(layout.buildDirectory.dir("generated/refmap"))
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += [
+        '-AoutRefMapFile=' + layout.buildDirectory.file("generated/refmap/${modid}.refmap.json").get().asFile.absolutePath,
+        '-AdefaultObfuscationEnv=searge',
+        '-AmappingTypes=tsrg',
+        '-AreobfTsrgFile=' + layout.buildDirectory.file("createMcpToSrg/output.tsrg").get().asFile.absolutePath
+    ]
+}
+
+compileJava.dependsOn 'createMcpToSrg'
+processResources.dependsOn compileJava
+
+sourceSets.each {
+    def dir = layout.buildDirectory.dir("sourceSets/" + it.name)
+    it.output.resourcesDir = dir
+    it.java.destinationDirectory = dir
+}
+
+jar {
+    manifest {
+        attributes 'MixinConfigs': '${modid}.mixins.refmap.json'
+    }
+    finalizedBy 'reobfJar'
+}
+
+apply from: 'mcreator.gradle'

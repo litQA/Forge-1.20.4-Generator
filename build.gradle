@@ -1,0 +1,27 @@
+plugins {
+    id "java"
+}
+
+group = "net.mcreator.generator.forge"
+version = pluginVersion
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+tasks.jar {
+    archiveFileName.set("generator-forge-1.20.4.zip")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.register("runMCreatorWithPlugin", JavaExec) {
+    dependsOn(processResources, jar)
+
+    environment("MCREATOR_PLUGINS_FOLDER", file("./build/libs"))
+    jvmArgs '--add-opens', 'java.base/java.lang=ALL-UNNAMED'
+    classpath = project(':MCreator').sourceSets.main.runtimeClasspath
+    mainClass = 'net.mcreator.Launcher'
+    workingDir = mcreator_path
+}

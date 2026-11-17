@@ -1,0 +1,1 @@
+/*@int*/(${input$entity} instanceof LivingEntity _living ? _living.invulnerableDuration - _living.hurtTime : 0)
