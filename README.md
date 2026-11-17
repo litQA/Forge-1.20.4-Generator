@@ -1,3 +1,5 @@
+<img width="1000"  alt="forge generator banner 1 20 4" src="https://github.com/user-attachments/assets/5c3dbefc-5476-45ff-a507-3bd7d5aa343e" />
+
 # Minecraft Forge 1.20.4 Generator
 
 An MCreator generator plugin that creates Minecraft Forge 1.20.4 workspaces and
@@ -8,7 +10,7 @@ generates Forge mod projects from MCreator 2026.3.
 | Component | Version |
 | --- | --- |
 | MCreator | 2026.3.44621 |
-| Supported MCreator range | `202600344621` through `202600399999` |
+| Supported MCreator range | [202600344621, 202600399999] |
 | Minecraft | 1.20.4 |
 | Forge | 49.2.13 |
 | ForgeGradle | 6.0.54 |
