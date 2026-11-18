@@ -3,7 +3,10 @@ plugins {
 }
 
 group = "net.mcreator.generator.forge"
-version = pluginVersion
+
+// plugin.json is the single source of truth for the release version.
+def pluginMetadata = new groovy.json.JsonSlurper().parse(file("src/main/resources/plugin.json"))
+version = pluginMetadata.info.version
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
@@ -14,14 +17,4 @@ tasks.withType(JavaCompile).configureEach {
 tasks.jar {
     archiveFileName.set("generator-forge-1.20.4.zip")
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-
-tasks.register("runMCreatorWithPlugin", JavaExec) {
-    dependsOn(processResources, jar)
-
-    environment("MCREATOR_PLUGINS_FOLDER", file("./build/libs"))
-    jvmArgs '--add-opens', 'java.base/java.lang=ALL-UNNAMED'
-    classpath = project(':MCreator').sourceSets.main.runtimeClasspath
-    mainClass = 'net.mcreator.Launcher'
-    workingDir = mcreator_path
 }

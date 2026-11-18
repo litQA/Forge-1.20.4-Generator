@@ -1,6 +1,6 @@
 # Changelog
 
-## 2026.3-1.0.0.1-beta
+## 2026.3-1.0.1.2-beta
 
 ### New Content
 
@@ -20,6 +20,8 @@
 
 ### Changes
 
+- Release metadata advanced to version `2026.3-1.0.1.2-beta` (build 2), with
+  `plugin.json` as the single source of the plugin version.
 - Base type initialization uses the MCreator 2026.3 `base_blocks`,
   `base_blockentities`, `base_items`, `base_entities`, and `base_features`
   template keys.
@@ -62,7 +64,7 @@ Fixed build compatibility issues.
   than the NeoForge-only `jvmArgument` helper.
 - Empty element types no longer emit registrations for init classes that were
   not generated.
-- The real `workspace/test-cp` workspace builds successfully with the fixed
+- A real generated test workspace builds successfully with the fixed
   ForgeGradle script and generated mod initializer.
 
 ### Known Limitations

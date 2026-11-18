@@ -7,6 +7,7 @@ NeoForge 1.20.4 generator baseline to the Forge 1.20.4 generator for
 MCreator 2026.3.44621.
 
 - Target plugin: `generator-forge-1.20.4`
+- Plugin version: `2026.3-1.0.1.2-beta`
 - Target MCreator: 2026.3.44621
 - Supported MCreator range: `202600344621` through `202600399999`
 - Minecraft: 1.20.4
@@ -141,7 +142,7 @@ generated workspace build, and dedicated-server startup.
   integration test still reports `Testing server run PASSED`.
 - The archive-name change is included in the final plugin jar. The generated
   workspace declares `build/libs/modid-1.0.jar`, matching `export_file`.
-- A real `workspace/test-cp` workspace built successfully after applying the
+- A real generated test workspace built successfully after applying the
   ForgeGradle `jvmArg` run-config fix and skipping registrations for empty
   element types.
 

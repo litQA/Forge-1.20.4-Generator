@@ -9,6 +9,7 @@ generates Forge mod projects from MCreator 2026.3.
 
 | Component | Version |
 | --- | --- |
+| Plugin version | `2026.3-1.0.1.2-beta` |
 | MCreator | 2026.3.44621 |
 | Supported MCreator range | [202600344621, 202600399999] |
 | Minecraft | 1.20.4 |
@@ -22,8 +23,8 @@ generates Forge mod projects from MCreator 2026.3.
 ## Installation
 
 1. Build or obtain `generator-forge-1.20.4.zip`.
-2. Install it with MCreator's plugin installer, or place it in the MCreator
-   plugins directory.
+2. Replace any existing copy of this plugin, then install the ZIP with
+   MCreator's plugin installer or place it in the MCreator plugins directory.
 3. Enable Java plugins in MCreator and restart the application.
 4. Create a new workspace and select **Minecraft Forge 1.20.4 Generator**.
 
@@ -76,7 +77,7 @@ build passed, and the dedicated server reached:
 Done (...s)! For help, type "help"
 ```
 
-A real `workspace/test-cp` workspace was also built end-to-end after the
+A real generated test workspace was also built end-to-end after the
 ForgeGradle run-config fix; the build completed successfully with 100
 non-fatal deprecation warnings.
 
@@ -102,5 +103,5 @@ record and limitations.
 - `CHANGELOG.md` -- release notes.
 - `MIGRATION-REPORT.md` -- baseline/target mapping, destructive changes, status
   table, test evidence, and known limitations.
-- `LICENSE` -- CC BY 4.0 for the original generator adaptation, with
+- `LICENSE` -- CC BY-NC 4.0 for the original generator adaptation, with
   third-party notices.
