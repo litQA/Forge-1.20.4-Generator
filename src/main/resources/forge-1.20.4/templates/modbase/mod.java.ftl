@@ -73,18 +73,18 @@ import java.util.stream.Stream;
 		<#if types.base_features?has_content>${JavaModName}Features.REGISTRY.register(modEventBus);</#if>
 		PLACEMENT_MODIFIERS.register(modEventBus);
 		<#if w.getElementsOfType("feature")?filter(e -> e.getMetadata("has_nbt_structure")??)?size != 0>StructureFeature.REGISTRY.register(modEventBus);</#if>
-		<#if types["paintings"]??>${JavaModName}Paintings.REGISTRY.register(modEventBus);</#if>
-		<#if types["potions"]??>${JavaModName}Potions.REGISTRY.register(modEventBus);</#if>
-		<#if types["potioneffects"]??>${JavaModName}MobEffects.REGISTRY.register(modEventBus);</#if>
-		<#if types["enchantments"]??>${JavaModName}Enchantments.REGISTRY.register(modEventBus);</#if>
-		<#if types["guis"]??>${JavaModName}Menus.REGISTRY.register(modEventBus);</#if>
-		<#if types["particles"]??>${JavaModName}ParticleTypes.REGISTRY.register(modEventBus);</#if>
-		<#if types["villagerprofessions"]??>${JavaModName}VillagerProfessions.PROFESSIONS.register(modEventBus);</#if>
-		<#if types["fluids"]??>
+		<#if types["paintings"]?has_content>${JavaModName}Paintings.REGISTRY.register(modEventBus);</#if>
+		<#if types["potions"]?has_content>${JavaModName}Potions.REGISTRY.register(modEventBus);</#if>
+		<#if types["potioneffects"]?has_content>${JavaModName}MobEffects.REGISTRY.register(modEventBus);</#if>
+		<#if types["enchantments"]?has_content>${JavaModName}Enchantments.REGISTRY.register(modEventBus);</#if>
+		<#if types["guis"]?has_content>${JavaModName}Menus.REGISTRY.register(modEventBus);</#if>
+		<#if types["particles"]?has_content>${JavaModName}ParticleTypes.REGISTRY.register(modEventBus);</#if>
+		<#if types["villagerprofessions"]?has_content>${JavaModName}VillagerProfessions.PROFESSIONS.register(modEventBus);</#if>
+		<#if types["fluids"]?has_content>
 			${JavaModName}Fluids.REGISTRY.register(modEventBus);
 			${JavaModName}FluidTypes.REGISTRY.register(modEventBus);
 		</#if>
-		<#if types["attributes"]??>${JavaModName}Attributes.REGISTRY.register(modEventBus);</#if>
+		<#if types["attributes"]?has_content>${JavaModName}Attributes.REGISTRY.register(modEventBus);</#if>
 		<#if w.hasElementsOfType("bannerpattern")>${JavaModName}BannerPatterns.REGISTRY.register(modEventBus);</#if>
 		</@javacompress>
 

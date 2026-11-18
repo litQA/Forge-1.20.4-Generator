@@ -76,6 +76,10 @@ build passed, and the dedicated server reached:
 Done (...s)! For help, type "help"
 ```
 
+A real `workspace/test-cp` workspace was also built end-to-end after the
+ForgeGradle run-config fix; the build completed successfully with 100
+non-fatal deprecation warnings.
+
 Some checks are intentionally limited to headless server validation. Client
 rendering, GUI interaction, and visual model/blockstate behavior require a
 real-machine client check. See `MIGRATION-REPORT.md` for the complete validation

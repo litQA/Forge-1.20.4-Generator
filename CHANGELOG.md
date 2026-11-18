@@ -34,7 +34,7 @@
 
 ### Fixes
 
-Fixed 12 bugs.
+Fixed build compatibility issues.
 
 - Forge `mods.toml` dependency metadata now uses `mandatory` and Forge/Minecraft
   version ranges.
@@ -57,6 +57,13 @@ Fixed 12 bugs.
   `reobfJar`.
 - The server integration test reaches `Done` without Mixin-apply or
   block-entity registry failures.
+
+- ForgeGradle run configurations use the supported `jvmArg` method rather
+  than the NeoForge-only `jvmArgument` helper.
+- Empty element types no longer emit registrations for init classes that were
+  not generated.
+- The real `workspace/test-cp` workspace builds successfully with the fixed
+  ForgeGradle script and generated mod initializer.
 
 ### Known Limitations
 

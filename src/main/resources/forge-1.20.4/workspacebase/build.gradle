@@ -19,7 +19,7 @@ minecraft {
             def mcreatorJvmOptions = System.getenv('MCREATOR_JVM_OPTIONS')
             if (mcreatorJvmOptions) {
                 mcreatorJvmOptions.split("\\s+").findAll { it.trim() }.each { arg ->
-                    jvmArgument(arg)
+                    jvmArg(arg)
                 }
             }
         }
